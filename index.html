@@ -1,247 +1,373 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rohit Kumar Roy | Portfolio</title>
-  <style>
-    /* ===== Global Styles ===== */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
-    body {
-      background: #f9fafc;
-      color: #333;
-      line-height: 1.6;
-    }
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rohit Kumar Roy | Premium Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Poppins, sans-serif
+        }
 
-    /* ===== Header / Nav ===== */
-    header {
-      background: #1e1e2f;
-      color: #fff;
-      padding: 15px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-    header h1 {
-      font-size: 1.5rem;
-      color: #ff4d5a;
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 20px;
-    }
-    nav a {
-      color: #fff;
-      font-weight: 500;
-      transition: 0.3s;
-    }
-    nav a:hover {
-      color: #ff4d5a;
-    }
+        html {
+            scroll-behavior: smooth
+        }
 
-    /* ===== Hero Section ===== */
-    .hero {
-      height: 90vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-                  url("rohit.jpg") center/cover no-repeat;
-      color: #fff;
-      padding: 20px;
-    }
-    .hero h2 {
-      font-size: 3rem;
-      margin-bottom: 10px;
-    }
-    .hero p {
-      font-size: 1.2rem;
-      max-width: 600px;
-    }
+        body {
+            background: linear-gradient(135deg, #0f172a, #111827, #1e293b);
+            color: #fff;
+            overflow-x: hidden
+        }
 
-    /* ===== About Section ===== */
-    .about {
-      padding: 60px 20px;
-      max-width: 1000px;
-      margin: auto;
-      text-align: center;
-    }
-    .about h2 {
-      font-size: 2.2rem;
-      margin-bottom: 20px;
-      color: #ff4d5a;
-    }
+        .progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            width: 0;
+            background: linear-gradient(90deg, #ff4d5a, #7c3aed);
+            z-index: 9999
+        }
 
-    /* ===== Skills Section ===== */
-    .skills {
-      padding: 60px 20px;
-      background: #fff;
-    }
-    .skills h2 {
-      text-align: center;
-      font-size: 2.2rem;
-      color: #ff4d5a;
-      margin-bottom: 30px;
-    }
-    .skill-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-      max-width: 1000px;
-      margin: auto;
-    }
-    .skill {
-      background: #f1f1f1;
-      padding: 20px;
-      border-radius: 10px;
-      text-align: center;
-      transition: 0.3s;
-    }
-    .skill:hover {
-      background: #ff4d5a;
-      color: #fff;
-      transform: translateY(-5px);
-    }
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 25px;
+            background: rgba(255, 255, 255, .08);
+            backdrop-filter: blur(15px);
+            z-index: 1000
+        }
 
-    /* ===== Achievements Section ===== */
-    .achievements {
-      padding: 60px 20px;
-      background: #f9f9f9;
-    }
-    .achievements h2 {
-      text-align: center;
-      font-size: 2.2rem;
-      color: #ff4d5a;
-      margin-bottom: 30px;
-    }
-    .timeline {
-      max-width: 800px;
-      margin: auto;
-      list-style: none;
-    }
-    .timeline li {
-      background: #fff;
-      padding: 20px;
-      margin-bottom: 15px;
-      border-radius: 8px;
-      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
-    }
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, #ff4d5a, #7c3aed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            z-index: 1001
+        }
 
-    /* ===== Contact Section ===== */
-    .contact {
-      padding: 60px 20px;
-      text-align: center;
-      background: #1e1e2f;
-      color: #fff;
-    }
-    .contact h2 {
-      font-size: 2.2rem;
-      margin-bottom: 20px;
-      color: #ff4d5a;
-    }
-    .contact p {
-      margin-bottom: 15px;
-    }
-    .contact a {
-      color: #ff4d5a;
-      font-weight: bold;
-    }
+        /* Hamburger Menu Icon */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 6px;
+            z-index: 1001
+        }
 
-    /* ===== Footer ===== */
-    footer {
-      background: #111;
-      color: #aaa;
-      text-align: center;
-      padding: 15px;
-    }
+        .bar {
+            width: 25px;
+            height: 3px;
+            background-color: #fff;
+            border-radius: 2px;
+            transition: all 0.3s ease-in-out
+        }
 
-    /* ===== Responsive ===== */
-    @media (max-width: 768px) {
-      .hero h2 {
-        font-size: 2rem;
-      }
-      nav ul {
-        gap: 10px;
-      }
-    }
-  </style>
+        nav ul {
+            display: flex;
+            gap: 20px;
+            list-style: none
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease
+        }
+
+        nav a:hover {
+            color: #ff758f
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px
+        }
+
+        .profile {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            padding: 5px;
+            background: linear-gradient(45deg, #ff4d5a, #7c3aed);
+            margin-bottom: 20px;
+            animation: float 4s infinite
+        }
+
+        .profile img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover
+        }
+
+        @keyframes float {
+            50% {
+                transform: translateY(-12px)
+            }
+        }
+
+        .hero h1 {
+            font-size: 3rem
+        }
+
+        .hero p {
+            opacity: .85;
+            max-width: 700px;
+            min-height: 24px
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 25px;
+            border-radius: 30px;
+            background: linear-gradient(90deg, #ff4d5a, #7c3aed);
+            color: #fff;
+            text-decoration: none;
+            transition: transform 0.3s ease
+        }
+
+        .btn:hover {
+            transform: translateY(-3px)
+        }
+
+        section {
+            padding: 80px 20px
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #ff758f
+        }
+
+        .card,
+        .timeline li {
+            background: rgba(255, 255, 255, .08);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 20px;
+            transition: transform 0.3s ease
+        }
+
+        .card:hover {
+            transform: translateY(-5px)
+        }
+
+        .skills {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px
+        }
+
+        .timeline {
+            list-style: none;
+            display: grid;
+            gap: 15px
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: rgba(255, 255, 255, .05)
+        }
+
+        .socials a {
+            margin: 0 10px;
+            color: #ff758f;
+            text-decoration: none
+        }
+
+        /* Mobile Responsiveness & Menu Logic */
+        @media(max-width:768px) {
+            .hero h1 {
+                font-size: 2rem
+            }
+
+            .menu-toggle {
+                display: flex
+            }
+
+            nav ul {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 250px;
+                height: 100vh;
+                background: rgba(15, 23, 42, 0.95);
+                backdrop-filter: blur(15px);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 40px;
+                transition: right 0.4s ease-in-out;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
+            }
+
+            nav ul.active {
+                right: 0
+            }
+
+            nav ul li a {
+                font-size: 1.2rem
+            }
+
+            /* Hamburger Animation Classes */
+            .menu-toggle.is-active .bar:nth-child(1) {
+                transform: translateY(9px) rotate(45deg)
+            }
+
+            .menu-toggle.is-active .bar:nth-child(2) {
+                opacity: 0
+            }
+
+            .menu-toggle.is-active .bar:nth-child(3) {
+                transform: translateY(-9px) rotate(-45deg)
+            }
+        }
+    </style>
 </head>
+
 <body>
-  <!-- Header -->
-  <header>
-    <h1>Rohit Kumar Roy</h1>
-    <nav>
-      <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Subjects</a></li>
-        <li><a href="#achievements">Achievements</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+    <div class="progress"></div>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <h2>Hello, I'm Rohit Kumar Roy</h2>
-    <p>A Class 11 Student & JEE Aspirant passionate about Science, Mathematics, and Technology.</p>
-  </section>
+    <header>
+        <div class="logo">Rohit Kumar Roy</div>
 
-  <!-- About Section -->
-  <section id="about" class="about">
-    <h2>About Me</h2>
-    <p>I am a Class 11 student preparing for the Joint Entrance Examination (JEE). 
-    I have a strong interest in Physics, Chemistry, and Mathematics, and I enjoy solving challenging problems and exploring new concepts. 
-    My goal is to pursue engineering at a top IIT and contribute to the field of technology and innovation.</p>
-  </section>
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
 
-  <!-- Skills Section -->
-  <section id="skills" class="skills">
-    <h2>Subjects & Skills</h2>
-    <div class="skill-grid">
-      <div class="skill">Physics</div>
-      <div class="skill">Chemistry</div>
-      <div class="skill">Mathematics</div>
-      <div class="skill">Problem Solving</div>
-      <div class="skill">Logical Thinking</div>
-      <div class="skill">Coding (HTML, CSS, JavaScript)</div>
-    </div>
-  </section>
+        <nav>
+            <ul id="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#achievements">Achievements</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <!-- Achievements Section -->
-  <section id="achievements" class="achievements">
-    <h2>My Achievements</h2>
-    <ul class="timeline">
-      <li>📘 Completed advanced problem sets in Physics,chemistry and Math</li>
-      <li>💻 Built small coding projects for fun learning</li>
-      <li>🎯 Preparing for JEE Main & Advanced (2027)</li>
-    </ul>
-  </section>
+    <section class="hero">
+        <div class="profile">
+            <img src="roh.jpeg" alt="Profile">
+        </div>
+        <h1>Rohit Kumar Roy</h1>
+        <p id="typing"></p>
+        <a href="#about" class="btn">Explore Portfolio</a>
+    </section>
 
-  <!-- Contact Section -->
-  <section id="contact" class="contact">
-    <h2>Contact Me</h2>
-    <p>Email: <a href="mailto:rohitroy31012010@gmail.com">rohitroy31012010@gmail.com</a></p>
-    <p>Phone: +91-XXXXXXXXX</p>
-  </section>
+    <section id="about">
+        <div class="container card">
+            <h2>About Me</h2>
+            <p>I am a Class 12 student and JEE aspirant passionate about Physics, Chemistry, Mathematics, coding, and
+                technology. My goal is to pursue engineering and build innovative projects.</p>
+        </div>
+    </section>
 
-  <!-- Footer -->
-  <footer>
-    <p>© 2025 Rohit Kumar Roy | Class 11 JEE Aspirant</p>
-  </footer>
+    <section id="skills">
+        <div class="container">
+            <h2>Skills & Subjects</h2>
+            <div class="skills">
+                <div class="card" style="text-align: center;">Physics</div>
+                <div class="card" style="text-align: center;">Chemistry</div>
+                <div class="card" style="text-align: center;">Mathematics</div>
+                <div class="card" style="text-align: center;">Problem Solving</div>
+                <div class="card" style="text-align: center;">Logical Thinking</div>
+                <div class="card" style="text-align: center;">HTML • CSS • JS</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="achievements">
+        <div class="container">
+            <h2>Achievements</h2>
+            <ul class="timeline">
+                <li>📘 Advanced PCM practice and learning</li>
+                <li>💻 Built coding projects and websites</li>
+                <li>🎯 Preparing for JEE Main & Advanced</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container card" style="text-align:center">
+            <h2>Contact</h2>
+            <p>Email: rohitroy31012010@gmail.com</p>
+            <br>
+            <div class="socials">
+                <a href="#">Instagram</a>
+                <a href="#">GitHub</a>
+                <a href="#">LinkedIn</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>© 2026 Rohit Kumar Roy | Premium Portfolio</footer>
+
+    <script>
+        // Typing Effect
+        const text = "Class 12 Student • JEE Aspirant • Web Developer";
+        let i = 0;
+        function type() {
+            if (i < text.length) {
+                document.getElementById("typing").innerHTML += text.charAt(i);
+                i++;
+                setTimeout(type, 70);
+            }
+        }
+        type();
+
+        // Scroll Progress Bar
+        window.addEventListener("scroll", () => {
+            let win = document.documentElement.scrollTop;
+            let h = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            document.querySelector(".progress").style.width = (win / h) * 100 + "%";
+        });
+
+        // Mobile Menu Functionality
+        const menuToggle = document.querySelector('#mobile-menu');
+        const navLinks = document.querySelector('#nav-links');
+        const navItems = document.querySelectorAll('#nav-links li a');
+
+        // Toggle menu on click
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('is-active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when a link is clicked
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                menuToggle.classList.remove('is-active');
+                navLinks.classList.remove('active');
+            });
+        });
+    </script>
 </body>
+
 </html>
